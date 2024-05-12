@@ -1,0 +1,66 @@
+html {
+  color: #222;
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+* {
+  color: ghostwhite;
+}
+
+header {
+  padding: 0;
+
+}
+
+body {
+  font-family: IBMPlexSans-Regular, UbuntuRegular, sans-serif;
+  background-color: #0c0c0c;
+  padding: 20px;
+}
+
+h1 {
+  color: whitesmoke;
+  background-color: #CA4327;
+  padding: 8px;
+  text-align: center;
+  border-radius: 4px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  width: 100%;
+}
+
+input, select, button {
+  display: block;
+  margin-top: 10px;
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box; /* New addition */
+  border: 1px solid #333333; /* Ensures a consistent border style */
+  border-radius: 4px; /* Optional: Adds rounded corners to inputs */
+  background-color: #222222;
+}
+
+button {
+  background-color: #CA4327;
+  color: white;
+  border: none; /* No border for buttons */
+  border-radius: 4px; /* Keeps rounded corners */
+  cursor: pointer;
+}
+
+button:is(:hover, :active) {
+  background-color: #BB371E;
+}
+
+.outputContainer {
+  border-left: 10px solid #CA4327;
+  padding: 8px;
+  display: none;
+  background-color: #FF7F7F;
+  border-radius: 4px;
+}
+

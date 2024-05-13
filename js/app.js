@@ -43,6 +43,8 @@ function sendEmailToTrustedContact(substance, userName, startTime, trustedContac
 function promptUser(substance, startTime) {
   alert(`Please confirm that you are okay!\nUsing: ${substance.name.toLowerCase()} since ${new Date(startTime).toLocaleTimeString()} (${new Date(startTime).toLocaleDateString()}).\nPress OK to cancel this message.\n\nContacting emergency contact in: ${formatTime(0.2*60*1000)}`);
   // Future implementations: check user response and handle accordingly
+
+
 }
 function formatTime(milliseconds) {
   if (milliseconds < 0) return "00:00"; // Return "00:00" if time has passed

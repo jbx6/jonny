@@ -13,7 +13,7 @@ document.getElementById("startButton").addEventListener("click", function (e) {
   sendEmailToTrustedContact(substance, userName, startTime, trustedContact)
 
   outputContainer.style.display = "block";
-  outputContainer.innerText = `${userName} is using ${substance.name.toLowerCase()}. They consumed at: ${new Date(startTime).toLocaleTimeString()} on ${new Date(startTime).toLocaleDateString()}. It is imperative that you are aware of: ${substance.warning}. You have received this alert because ${userName} has nominated you as their trusted contact.`;
+  outputContainer.innerHTML = `<p>${userName} is using ${substance.name.toLowerCase()}.</p> <p>They consumed at: ${new Date(startTime).toLocaleTimeString()} on ${new Date(startTime).toLocaleDateString()}.</p> <p>It is imperative that you are aware of: ${substance.warning}.</p> <p>You have received this alert because ${userName} has nominated you as their trusted contact.</p>`;
 })
 function startCountdown(substance, startTime) {
   const endTime = startTime + substance.checkInterval; // Calculate when the session should end
@@ -29,7 +29,8 @@ function startCountdown(substance, startTime) {
     }
 
     // Update the display with the formatted time remaining
-    document.getElementById("timeContainer").innerText = formatTime(timeRemaining);
+    document.querySelector('#timeContainer').style.display = 'flex'
+    document.getElementById("timeSpan").innerText = formatTime(timeRemaining);
   }, 1000); // Update every second
 }
 function sendEmailToTrustedContact(substance, userName, startTime, trustedContact) {

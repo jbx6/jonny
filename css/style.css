@@ -1,7 +1,8 @@
 html {
   color: #222;
   font-size: 1em;
-  line-height: 1.4;
+  /*line-height: 1.4;*/
+  background-color: #0c0c0c;
 }
 
 * {
@@ -15,9 +16,15 @@ header {
 
 body {
   font-family: IBMPlexSans-Regular, UbuntuRegular, sans-serif;
-  background-color: #0c0c0c;
   padding: 20px;
 }
+
+@media only screen and (max-width: 600px) {
+  body {
+    padding: 8px;
+  }
+}
+
 
 h1 {
   color: whitesmoke;
@@ -58,9 +65,28 @@ button:is(:hover, :active) {
 
 .outputContainer {
   border-left: 10px solid #CA4327;
-  padding: 8px;
   display: none;
   background-color: #FF7F7F;
   border-radius: 4px;
+  padding: 4px 10px;
+  line-height: 1;
 }
 
+#timeContainer {
+  display: none;
+  margin-bottom: 20px;
+}
+
+.active {
+  display: flex;
+}
+
+#timeContainer span {
+  border: 1px solid #333333; /* Ensures a consistent border style */
+  border-radius: 4px; /* Optional: Adds rounded corners to inputs */
+  font: 600 48px sans-serif;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 8px 0;
+}

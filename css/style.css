@@ -31,7 +31,8 @@ h1 {
   background-color: #CA4327;
   padding: 8px;
   text-align: center;
-  border-radius: 4px;
+  border-radius: 4px 4px 0 0;
+  margin-bottom: 0;
 }
 
 label {
@@ -89,4 +90,31 @@ button:is(:hover, :active) {
   display: flex;
   justify-content: center;
   padding: 8px 0;
+}
+
+.menu-block {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #333333;
+  border-right: 1px solid #333333;/* Ensures a consistent border style */
+  border-radius: 0 0 4px 4px;
+  margin: 0 auto;
+  padding: 0;
+  background-color: #222222;
+}
+
+.menu-block ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 0;
+}
+.menu-block li {
+}
+.menu-block li a {
+  background-color: transparent;
+  font: 600 20px sans-serif;
+  text-decoration: none;
 }

@@ -1,20 +1,62 @@
 document.getElementById("startButton").addEventListener("click", function (e) {
-  e.preventDefault()
+  e.preventDefault();
   const substanceKey = document.getElementById("substance").value;
   const userName = document.getElementById("name").value;
   const substance = substances[substanceKey];
+  const hasNaloxone = document.getElementById("hasNaloxone").value;
   const startTime = new Date().getTime(); // Record the exact time the session starts
-  const outputContainer = document.getElementById("outputContainer")
+  const outputContainer = document.getElementById("outputContainer");
   const trustedContact = document.getElementById("trustedContact").value;
 
-  console.log(`Session started for ${substance.name.toLowerCase()} at ${new Date(startTime).toLocaleTimeString()}.`);
+  const userLocation = new Location();
+  userLocation.getCoordinates((latitude, longitude) => {
+    console.log(`Session started for ${substance.name.toLowerCase()} at ${new Date(startTime).toLocaleTimeString()}.`);
 
-  startCountdown(substance, startTime);
-  sendEmailToTrustedContact(substance, userName, startTime, trustedContact)
+    startCountdown(substance, startTime);
+    sendEmailToTrustedContact(substance, userName, startTime, trustedContact);
 
-  outputContainer.style.display = "block";
-  outputContainer.innerHTML = `<p>${userName} is using ${substance.name.toLowerCase()}.</p> <p>They consumed at: ${new Date(startTime).toLocaleTimeString()} on ${new Date(startTime).toLocaleDateString()}.</p> <p>It is imperative that you are aware of: ${substance.warning}.</p> <p>You have received this alert because ${userName} has nominated you as their trusted contact.</p>`;
-})
+    outputContainer.style.display = "block";
+    outputContainer.innerHTML = `<p>${userName} is using ${substance.name.toLowerCase()}.</p>
+                                 <p>They consumed at: ${new Date(startTime).toLocaleTimeString()} on ${new Date(startTime).toLocaleDateString()}.</p>
+                                 <p><strong>WARNING:</strong><br> ${substance.warning}.</p>
+                                 <p>You have received this alert because ${userName} has nominated you as their trusted contact.</p>
+                                 <p>Location: ${latitude}, ${longitude}</p>`;
+
+    if (hasNaloxone === "yes") {
+      let naloxoneMessage = document.createElement("p");
+      naloxoneMessage.innerText = "You have naloxone available.";
+      outputContainer.appendChild(naloxoneMessage);
+    } else {
+      let naloxoneMessage = document.createElement("p");
+      naloxoneMessage.innerText = "You do not have naloxone available.";
+      outputContainer.appendChild(naloxoneMessage);
+    }
+  });
+});
+
+function Location() {
+  this.latitude = null;
+  this.longitude = null;
+  this.getCoordinates = function(callback) {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          this.latitude = position.coords.latitude;
+          this.longitude = position.coords.longitude;
+          callback(this.latitude, this.longitude);
+        },
+        (error) => {
+          console.error("Geolocation error:", error.message);
+          callback("Location unavailable", "Location unavailable");
+        }
+      );
+    } else {
+      console.error("Geolocation is not supported by this browser.");
+      callback("Geolocation not supported", "Geolocation not supported");
+    }
+  };
+}
+
 function startCountdown(substance, startTime) {
   const endTime = startTime + substance.checkInterval; // Calculate when the session should end
   const interval = setInterval(() => {

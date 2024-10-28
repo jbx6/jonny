@@ -2,7 +2,7 @@ const substances = {
  "opioids": {
    "name": "Opioids",
    "checkInterval": 2 * 60 * 1000, // every 2 minutes
-   "warning": "Opioids can suppress breathing. Regular check-ins are crucial!"
+   "warning": " • Opioids can suppress breathing. Regular check-ins are crucial!"
  },
   "cannabis": {
    "name": "Cannabis",

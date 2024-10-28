@@ -24,8 +24,18 @@
 <body>
   <header>
     <h1>JONNY</h1>
+
+    <nav>
+      <div class="menu-block">
+        <ul>
+          <li><a href="#">App</a></li>
+          <li><a href="#">Substances</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+      </div>
+    </nav>
+    <h3>Your Drug Safety Companion</h3>
   </header>
-  <h3>Your Drug Safety Companion</h3>
   <div id="timeContainer"><span id="timeSpan">12:00</span></div>
   <div id="outputContainer" class="outputContainer"></div>
   <form id="drugUseForm">
@@ -38,7 +48,12 @@
       <option value="amphetamine">Amphetamines</option>
       <!-- Add more substances as needed -->
     </select>
-    <label for="trustedContact">Trusted contact (email/ sms):</label>
+    <label for="accessToNaloxone">Access to Naloxone:</label>
+    <select name="hasNaloxone" id="hasNaloxone" required>
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select>
+    <label for="trustedContact">Trusted contact (email):</label>
     <input type="text" name="trustedContact" id="trustedContact" required>
     <button type="button" id="startButton">Start Session</button>
   </form>

@@ -10,4 +10,5 @@
 <li style="text-decoration: line-through;"><strike>Style, format (add spacing) to output message (red block)</strike></li>
 <li>'Better' formatting of email message</li>
 <li>Add a function to allow users to stop the session (thus countdown, ±action)</li>
+<li>Add database support to log locations, etc for hotspot identification</li>
 </ul>
